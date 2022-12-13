@@ -24,7 +24,7 @@ class Post(models.Model):
         ('legume', 'Legume'),
         ('grain', 'Grain'),
         ('meat', 'Meat'),
-        ('poultry', 'Poultry')
+        ('poultry', 'Poultry'),
         ('fish', 'Fish'),
         ('seafood', 'Seafood'),
         ('egg', 'Egg'),
