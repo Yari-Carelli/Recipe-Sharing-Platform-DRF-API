@@ -1,3 +1,31 @@
-from django.shortcuts import render
+from rest_framework import generics, permissions, filters
+from drf_api.permissions import IsOwnerOrReadOnly
+from .models import Event
+from .serializers import EventSerializer
 
-# Create your views here.
+
+class EventList(generics.ListCreateAPIView):
+    """
+    Retrieve events from DB.
+    Create new events.
+    """
+    serializer_class = EventSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    queryset = Event.objects.all()
+
+    def perform_create(self, serializer):
+        """
+        Check for user authentication.
+        """
+        serializer.save(owner=self.request.user)
+
+    filter_backends = [
+        filters.SearchFilter,
+    ]
+
+    search_fields = [
+        'owner__username',
+        'title',
+        'city',
+        'country',
+    ]
