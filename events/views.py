@@ -29,3 +29,12 @@ class EventList(generics.ListCreateAPIView):
         'city',
         'country',
     ]
+
+
+class EventDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Retrieve, Update & Destroy events.
+    """
+    serializer_class = EventSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    queryset = Event.objects.all()
