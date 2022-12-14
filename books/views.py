@@ -39,3 +39,15 @@ class BookList(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+
+
+class BookDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Retrieve a book and edit or delete it if you own it.
+    """
+    serializer_class = BookSerializer
+    permission_classes = [IsOwnerOrReadOnly]
+    queryset = Book.objects.annotate(
+        likes_count=Count('likes', distinct=True),
+        comments_count=Count('comment', distinct=True)
+    ).order_by('-created_at')
