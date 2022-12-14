@@ -11,7 +11,7 @@ class Book(models.Model):
     author = models.CharField(max_length=255, null=True)
     description = models.TextField(blank=True)
     number_of_pages = models.IntegerField(null=True)
-    published_date = models.DateField(null=True)
+    publication_date = models.DateField(null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
