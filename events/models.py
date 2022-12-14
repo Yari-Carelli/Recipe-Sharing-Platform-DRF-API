@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 class Event(models.Model):
     """
-    Events model for database.
+    Event model for database.
     """
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=300)
