@@ -14,6 +14,9 @@ class Book(models.Model):
     publication_date = models.DateField(null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    image = models.ImageField(
+        upload_to='images/', default='../default_post_wdyur2', blank=True
+    )
 
     class Meta:
         ordering = ['-created_at']
