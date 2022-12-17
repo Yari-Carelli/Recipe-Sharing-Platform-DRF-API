@@ -8,10 +8,10 @@ class Book(models.Model):
     """
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=300)
-    author = models.CharField(max_length=255, null=True)
+    author = models.CharField(max_length=255, null=True, blank=True)
     description = models.TextField(blank=True)
-    number_of_pages = models.IntegerField(null=True)
-    publication_date = models.DateField(null=True)
+    number_of_pages = models.IntegerField(null=True, blank=True)
+    publication_date = models.DateField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     image = models.ImageField(
