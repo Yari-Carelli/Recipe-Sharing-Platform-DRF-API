@@ -80,12 +80,7 @@ if 'CLIENT_ORIGIN_DEV' in os.environ:
     ]
 
 CORS_ALLOW_CREDENTIALS = True
-# Suggested additions
-CORS_ALLOW_HEADERS = list(default_headers)
-CORS_ALLOW_METHODS = list(default_methods)
-CSRF_TRUSTED_ORIGINS = [os.environ.get(
-    'CLIENT_ORIGIN_DEV', 'CLIENT_ORIGIN',
-)]
+
 
 # Application definition
 
