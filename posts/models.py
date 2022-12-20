@@ -7,7 +7,7 @@ class Post(models.Model):
     Post model, related to 'owner', i.e. a User instance.
     Default image set so that we can always reference image.url.
     """
-    category_choices = [
+    course_choices = [
         ('none', 'None'),
         ('appetizers_&_snacks', 'Appetizers & Snacks'),
         ('breakfast_&_brunch', 'Breakfast & Brunch'),
@@ -19,6 +19,9 @@ class Post(models.Model):
         ('salads', 'Salads'),
         ('condiments', 'Condiemnts'),
         ('soups_&_stews', 'Soups & Stews'),
+    ]
+    category_choices = [
+        ('none', 'None'),
         ('fruits', 'Fruits'),
         ('vegetables', 'Vegetables'),
         ('legumes', 'Legumes'),
@@ -41,6 +44,11 @@ class Post(models.Model):
     directions = models.TextField(blank=True)
     image = models.ImageField(
         upload_to='images/', default='../default_post_wdyur2', blank=True
+    )
+    course = models.CharField(
+        max_length=20,
+        choices=course_choices,
+        default='none'
     )
     category = models.CharField(
         max_length=20,
