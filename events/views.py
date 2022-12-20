@@ -27,8 +27,7 @@ class EventList(generics.ListCreateAPIView):
     search_fields = [
         'owner__username',
         'title',
-        'city',
-        'country',
+        'location',
     ]
 
 
