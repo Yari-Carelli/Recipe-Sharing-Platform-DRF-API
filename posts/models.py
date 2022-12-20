@@ -7,28 +7,28 @@ class Post(models.Model):
     Post model, related to 'owner', i.e. a User instance.
     Default image set so that we can always reference image.url.
     """
-    image_filter_choices = [
+    category_choices = [
         ('none', 'None'),
-        ('appetizer', 'Appetizer'),
+        ('appetizers_&_snacks', 'Appetizers & Snacks'),
         ('breakfast_&_brunch', 'Breakfast & Brunch'),
         ('lunch', 'Lunch'),
         ('dinner', 'Dinner'),
-        ('dessert', 'Dessert'),
-        ('main_dish', 'Main Dish'),
-        ('side_dish', 'Side Dish'),
-        ('salad', 'Salad'),
-        ('condiment', 'Condiemnt'),
-        ('soup_&_stew', 'Soup & Stew'),
-        ('fruit', 'Fruit'),
-        ('vegetable', 'Vegetable'),
-        ('legume', 'Legume'),
-        ('grain', 'Grain'),
-        ('meat', 'Meat'),
+        ('desserts', 'Desserts'),
+        ('main_dishes', 'Main Dishes'),
+        ('side_dishes', 'Side Dishes'),
+        ('salads', 'Salads'),
+        ('condiments', 'Condiemnts'),
+        ('soups_&_stews', 'Soups & Stews'),
+        ('fruits', 'Fruits'),
+        ('vegetables', 'Vegetables'),
+        ('legumes', 'Legumes'),
+        ('grains', 'Grains'),
+        ('meats', 'Meats'),
         ('poultry', 'Poultry'),
         ('fish', 'Fish'),
         ('seafood', 'Seafood'),
-        ('egg', 'Egg'),
-        ('mushroom', 'Mushroom'),
+        ('eggs', 'Eggs'),
+        ('mushrooms', 'Mushrooms'),
         ('cheese_&_dairy', 'Cheese & Dairy'),
         ('nuts_&_seeds', 'Nuts & Seeds'),
         ('herbs_&_spices', 'Herbs & Spices'),
@@ -37,12 +37,15 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=255)
-    content = models.TextField(blank=True)
+    ingredients = models.TextField(blank=True)
+    directions = models.TextField(blank=True)
     image = models.ImageField(
         upload_to='images/', default='../default_post_wdyur2', blank=True
     )
-    image_filter = models.CharField(
-        max_length=32, choices=image_filter_choices, default='normal'
+    category = models.CharField(
+        max_length=20,
+        choices=category_choices,
+        default='none'
     )
 
     class Meta:
