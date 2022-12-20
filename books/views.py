@@ -37,4 +37,4 @@ class BookDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     serializer_class = BookSerializer
     permission_classes = [IsOwnerOrReadOnly]
-    queryset = Book.objects.annotate()
+    queryset = Book.objects.all()
