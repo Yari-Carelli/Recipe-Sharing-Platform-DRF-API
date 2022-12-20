@@ -12,6 +12,7 @@ class Book(models.Model):
     description = models.TextField(blank=True)
     number_of_pages = models.IntegerField(null=True, blank=True)
     publication_date = models.DateField(null=True, blank=True)
+    book_link = models.URLField('Book URL', max_length=400, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     image = models.ImageField(
