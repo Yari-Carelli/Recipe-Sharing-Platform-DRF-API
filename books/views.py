@@ -16,11 +16,10 @@ class BookList(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         """
-        If user is authenticated,
-        save book.
+        If user is authenticated, save book.
         """
         serializer.save(owner=self.request.user)
-    
+
     filter_backends = [
         filters.SearchFilter,
     ]
